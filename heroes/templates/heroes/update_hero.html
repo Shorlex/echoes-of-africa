@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Updating the Biography of {{biography.name}}
+{% endblock title %}
+
+{% block content %}
+    <section id="users">
+        <h1>
+            Updating the Biography of {{biography.name}}
+        </h1>
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form}}
+
+            <label for="hero_images">Upload Images:</label>
+    <i><p style="margin: 0; font-size: 12px; color: grey">You can select multiple images!</p></i>
+            <input type="file" name="images" accept="image/*" multiple /><br /><br />
+
+            <button type="submit">Update Biography</button>
+        </form>
+    </section>
+
+    <script>
+        document.getElementById('add-more-images').addEventListener('click', function() {
+            const imageUploadFields = document.getElementById('image-upload-fields');
+            const newField = document.createElement('div');
+            newField.classList.add('image-upload-field');
+            newField.innerHTML = '<input type="file" name="images">';
+            imageUploadFields.appendChild(newField);
+        });
+    </script>
+{% endblock content %}

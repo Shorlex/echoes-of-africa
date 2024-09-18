@@ -1,0 +1,768 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: black;
+  color: whitesmoke;
+}
+
+.nav-bar {
+  background-color: black;
+  width: 100%;
+  padding: 10px 100px;
+  position: fixed;
+  z-index: 99;
+}
+.nav-bar .small-screen {
+  display: none;
+}
+.nav-bar .container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.nav-bar .container .logo a img {
+  width: 50px;
+  height: 50px;
+}
+.nav-bar .container .link {
+  width: 70%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.nav-bar .container .link a,
+.nav-bar .container .link button {
+  margin-left: 30px;
+  color: lightgray;
+  display: flex;
+  font-size: 1rem;
+  text-align: center;
+  flex-direction: column-reverse;
+  text-decoration: none;
+  background: transparent;
+  border: none;
+}
+.nav-bar .container .link a:hover,
+.nav-bar .container .link button:hover {
+  color: grey;
+}
+.nav-bar .container form input {
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 10px;
+  color: whitesmoke;
+  background: transparent;
+}
+.nav-bar .container form button {
+  padding: 10px 20px;
+  color: black;
+  background-color: lightgrey;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+#home {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 150px;
+}
+#home h1 {
+  text-align: center;
+  font-size: 3rem;
+  background-image: url(https://i.pinimg.com/474x/8c/70/c9/8c70c9e2dd22531d44e5ebfe867d7e29.jpg);
+  background-size: 50%;
+  background-position: 50%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+#home h3 {
+  text-align: center;
+  font-size: 1.5rem;
+}
+/* #home .heading img {
+  margin-top: -70px;
+} */
+
+#intro {
+  padding: 50px 0;
+  width: 100%;
+  /* min-height: 100vh; */
+}
+#intro .intro {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 0 200px;
+}
+#intro .intro .image,
+#intro .intro .detail {
+  width: 50%;
+}
+#intro .intro .image img {
+  width: 70%;
+  height: 100%;
+}
+#intro .intro .detail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#intro .intro .detail p {
+  font-size: 1rem;
+}
+#intro .intro .detail p::first-letter {
+  font-size: 3rem;
+}
+
+#users {
+  padding: 150px;
+  width: 70%;
+  min-height: 100vh;
+  margin: 0 auto;
+}
+#users form ul {
+  list-style: none;
+  padding-left: 20px;
+}
+#users form > * {
+  margin-top: 30px;
+}
+#users form div {
+  display: flex;
+  flex-direction: column;
+}
+#users .users_reg div:nth-child(5) {
+  display: none;
+}
+#users form div input {
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 10px;
+  color: whitesmoke;
+  background: transparent;
+}
+#users form div textarea {
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 10px;
+  color: whitesmoke;
+  background: transparent;
+}
+#users form div .helptext {
+  display: none;
+}
+#users form button {
+  padding: 10px 50px;
+  color: black;
+  background-color: lightgrey;
+  border-radius: 10px;
+  cursor: pointer;
+}
+#users form .more-image button {
+  width: 200px;
+  padding: 0;
+  background: transparent;
+  color: whitesmoke;
+  box-shadow: 1px 1px 5px grey;
+}
+
+#heroes {
+  width: 100%;
+  padding: 150px 50px 50px 100px;
+}
+#heroes h2 {
+  font-size: 2rem;
+}
+#heroes .more {
+  display: flex;
+  justify-content: end;
+  padding-right: 150px;
+  margin-top: 10px;
+}
+#heroes .more a {
+  text-decoration: none;
+  color: whitesmoke;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px grey;
+  padding: 10px 20px;
+}
+#heroes .more a:hover {
+  box-shadow: 1px 1px 2px grey;
+}
+#heroes .heroes {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+#heroes .heroes .hero {
+  width: 300px;
+  height: 350px;
+  box-shadow: 1px 1px 10px gray, -1px -1px 10px grey;
+  transition: 0.4s all ease-in-out;
+  border-radius: 20px;
+  margin: 15px;
+}
+#heroes .heroes .hero a {
+  text-decoration: none;
+  color: whitesmoke;
+}
+#heroes .heroes .hero:hover {
+  box-shadow: 1px 1px 3px gray, -1px -1px 3px grey;
+}
+#heroes .heroes .hero a:active {
+  color: whitesmoke;
+}
+#heroes .heroes .hero .image {
+  width: 100%;
+  height: 65%;
+}
+#heroes .heroes .hero .image img {
+  width: 100%;
+  height: 100%;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+#heroes .heroes .hero .detail {
+  width: 100%;
+  height: 35%;
+  padding: 10px;
+}
+#heroes .pagination {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+#heroes .pagination a {
+  padding: 10px 20px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px grey;
+  color: whitesmoke;
+  transition: 0.1s ease-in-out all;
+}
+#heroes .pagination a:hover {
+  box-shadow: 1px 1px 2px grey;
+}
+
+#biography {
+  width: 100%;
+  min-height: 100vh;
+}
+#biography .biography .home .info {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: end;
+  padding: 0 0 50px 50px;
+}
+#biography .biography .home .info .hero-name {
+  font-family: "Grey Qo", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3rem;
+}
+#biography .biography .home .info .detail {
+  width: 200px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+#biography .biography .home .info .detail .dash {
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
+}
+#biography .biography .home::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.5;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#biography .biography .description {
+  width: 70%;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding-top: 10px;
+}
+#biography .biography .description h3 a {
+  text-decoration: none;
+  color: grey;
+}
+#biography .biography .description h3 a span {
+  margin-top: 10px;
+}
+#biography .biography .description .gallery {
+  width: 100%;
+  height: 70vh;
+  margin-top: 50px !important;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+#biography .biography .delete {
+  margin: 50px auto;
+  width: 70%;
+}
+#biography .biography .delete .delete-btn {
+  background-color: red;
+  color: #fff;
+  width: 100%;
+}
+#biography .biography .comment-section {
+  width: 100%;
+  padding: 50px 100px;
+  margin-top: 100px;
+  box-shadow: 1px 1px 5px darkgrey;
+}
+#biography .biography .comment-section .show-comment {
+  max-height: 0;
+  overflow: hidden;
+  transition: 0.4s all ease-in-out;
+  margin-top: 20px;
+}
+#biography .biography .comment-section h3 button {
+  font-size: small;
+  padding: 5px 10px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px grey;
+  color: whitesmoke;
+  transition: 0.1s ease-in-out all;
+}
+#biography .biography .comment-section button {
+  background: transparent;
+  color: whitesmoke;
+  box-shadow: 1px 1px 5px darkgrey;
+  padding: 5px 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+}
+#biography .biography .comment-section button:hover {
+  box-shadow: 1px 1px 3px gray;
+}
+#biography .biography .comment-section form {
+  border-radius: 10px;
+  margin-top: 30px;
+  width: 100%;
+}
+#biography .biography .comment-section .reply-form {
+  max-height: 0;
+  overflow: hidden;
+  transition: 0.4s all ease-in-out;
+}
+/* .heart{
+  color: #9b1003;
+} */
+.reply {
+  color: grey;
+}
+#biography .biography .comment-section form textarea {
+  width: 100%;
+  padding: 5px;
+  background: transparent;
+  border-radius: 5px;
+  color: whitesmoke;
+}
+#biography .biography .comment-section form label {
+  display: none;
+}
+#biography .biography .comment-section .comment {
+  width: 100%;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px darkgrey;
+  margin-top: 20px;
+  position: relative;
+}
+#biography .biography .comment-section .reply-view {
+  font-size: 12px;
+  color: grey;
+  position: relative;
+  padding-right: 25px;
+}
+#biography .biography .comment-section .replies-content {
+  margin-top: 20px;
+  position: relative;
+  max-height: 0;
+  overflow: hidden;
+  transition: 0.4s all ease-in-out;
+}
+#biography .biography .comment-section .comment .reply-like {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+}
+
+#weekly-hero{
+  width: 100%;
+  padding: 50px 100px;
+}
+#weekly-hero .hero .image img{
+  width: 350px;
+}
+
+#testimonial {
+  display: flex;
+  padding: 50px 0;
+}
+a {
+  text-decoration: none;
+}
+#demo {
+  background: linear-gradient(112deg, black 50%, gray 50%);
+  max-width: 900px;
+  height: 400px;
+  margin: auto;
+  box-shadow: 1px 1px 5px lightgrey;
+}
+.carousel-caption {
+  position: initial;
+  z-index: 10;
+  padding: 2rem 8rem;
+  /* color: rgba(78, 77, 77, 0.856); */
+  text-align: center;
+  font-size: 1.2rem;
+  font-style: italic;
+  font-weight: bold;
+  line-height: 2rem;
+}
+@media (max-width: 767px) {
+  .carousel-caption {
+    position: initial;
+    z-index: 10;
+    padding: 3rem 2rem;
+    text-align: center;
+    font-size: 0.8rem;
+    font-style: italic;
+    font-weight: bold;
+    line-height: 1.5rem;
+  }
+}
+.carousel-caption img {
+  width: 6rem;
+  border-radius: 5rem;
+  margin-top: 2rem;
+}
+@media (max-width: 767px) {
+  .carousel-caption img {
+    width: 4rem;
+    border-radius: 4rem;
+    margin-top: 1rem;
+  }
+}
+#image-caption {
+  font-style: normal;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+@media (max-width: 767px) {
+  #image-caption {
+    font-style: normal;
+    font-size: 0.6rem;
+    margin-top: 0.5rem;
+  }
+}
+.arrow {
+  background-color: whitesmoke;
+  color: black;
+  padding: 1.4rem;
+}
+@media (max-width: 767px) {
+  i {
+    padding: 0.8rem;
+  }
+}
+.carousel-control-prev {
+  justify-content: flex-start;
+}
+.carousel-control-next {
+  justify-content: flex-end;
+}
+.carousel-control-prev,
+.carousel-control-next {
+  transition: none;
+  opacity: unset;
+}
+
+#myModal .modal-dialog {
+  margin-top: 200px;
+}
+#myModal .modal-dialog .modal-content {
+  background-color: black;
+  border-radius: 20px;
+  box-shadow: 1px 1px 5px grey;
+}
+#myModal .modal-dialog .modal-content .confirm {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+#cta {
+  width: 70%;
+  margin: 100px auto;
+  padding: 30px 100px;
+  background-image: url(https://www.orfonline.org/public/uploads/posts/image/Africa-First.jpg);
+  background-repeat: repeat;
+  background-position: 50%;
+  position: relative;
+  border-radius: 20px;
+}
+#cta::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.7;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#cta .cta {
+  position: relative;
+  z-index: 1;
+}
+#cta .cta h2,
+#cta .cta h3 {
+  text-align: center;
+}
+#cta .cta .button {
+  display: flex;
+  justify-content: center;
+}
+#cta .cta .button a {
+  text-decoration: none;
+  color: whitesmoke;
+  background-color: black;
+  padding: 10px 20px;
+  border-radius: 20px;
+  margin-top: 10px;
+  box-shadow: 1px 1px 5px grey;
+}
+
+footer {
+  width: 100%;
+  padding: 50px 100px 1px 100px;
+  box-shadow: 1px 1px 5px darkgrey;
+}
+footer .footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+footer .footer .get-intouch {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+footer .footer .get-intouch h2 {
+  font-size: 3rem;
+}
+footer .footer .get-intouch .icons {
+  padding-top: 10px;
+}
+footer .footer .get-intouch .icons a {
+  text-decoration: none;
+  color: whitesmoke;
+  background-color: black;
+  padding: 10px;
+  box-shadow: 1px 1px 5px grey;
+  margin-right: 30px;
+}
+footer .footer .about-us {
+  width: 50%;
+  font-style: italic;
+}
+footer .footer .about-us img {
+  width: 100px;
+  height: 100px;
+}
+footer .footer .about-us p a {
+  text-decoration: none;
+  color: gray;
+}
+footer .copy {
+  display: flex;
+  justify-content: center;
+  font-size: 0.7rem;
+  color: gray;
+}
+/* Responsiveness */
+@media (max-width: 1024px) {
+  .nav-bar {
+    padding: 10px;
+  }
+  .nav-bar .container .link {
+    width: 60%;
+  }
+  #home {
+    min-height: auto;
+  }
+  #intro {
+    min-height: auto;
+    padding-bottom: 50px;
+  }
+  #users {
+    min-height: auto;
+  }
+  #heroes {
+    min-height: auto;
+    padding-bottom: 100px !important;
+    padding-top: 100px !important;
+  }
+  #intro .intro {
+    padding: 0 100px;
+  }
+  #demo {
+    height: auto;
+  }
+}
+
+@media (max-width: 1000px) {
+  .nav-bar .container .wide-screen {
+    display: none;
+  }
+  .nav-bar .small-screen {
+    display: block;
+    width: 100%;
+    background-color: black;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .nav-bar .small-screen a,
+  .nav-bar .small-screen button {
+    color: lightgray;
+    display: flex;
+    font-size: 1rem;
+    text-align: center;
+    flex-direction: column-reverse;
+    text-decoration: none;
+    background: transparent;
+    border: none;
+  }
+  .nav-bar .container .link a:hover,
+  .nav-bar .container .link button:hover {
+    color: grey;
+  }
+  footer {
+    padding-bottom: 50px;
+  }
+}
+
+@media (max-width: 900px) {
+  #users {
+    width: 95%;
+  }
+  #intro .intro {
+    flex-direction: column;
+  }
+  #intro .intro .image,
+  #intro .intro .detail {
+    width: 100%;
+  }
+  #intro .intro .image img {
+    margin-left: 100px;
+  }
+  #heroes .heroes .hero {
+    margin-top: 50px;
+  }
+  #biography .biography .comment-section {
+    margin-top: 0 !important;
+  }
+  footer .footer {
+    flex-direction: column;
+  }
+  footer .footer .about-us {
+    width: 100%;
+    margin-top: 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  #home h1 {
+    font-size: 1.5rem;
+  }
+  #home h3 {
+    font-size: 1rem;
+  }
+  #home .heading img {
+    width: 100%;
+    margin-top: 0;
+  }
+  #biography .biography .comment-section {
+    padding: 50px;
+    margin-top: 20px;
+  }
+  #intro .intro .image img {
+    margin-left: 50px;
+  }
+  #users {
+    padding: 150px 30px;
+  }
+  #cta {
+    padding: 30px;
+  }
+  #cta .cta h2,
+  #cta .cta h3 {
+    font-size: 1rem;
+  }
+  footer .footer .get-intouch {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  #biography .biography .description {
+    width: 90%;
+  }
+  #weekly-hero{
+  padding: 50px 20px;
+  }
+  #biography .biography .comment-section {
+    padding: 50px 20px;
+  }
+  #intro .intro {
+    padding: 0 30px;
+  }
+  #heroes {
+    padding: 50px 30px !important;
+  }
+  #cta {
+    width: 95%;
+  }
+  footer {
+    padding: 30px 30px 50px 30px;
+  }
+}
+
+@media (max-width: 400px) {
+  .nav-bar {
+    padding: 10px 0;
+  }
+  .nav-bar .container form button {
+    padding: 10px;
+  }
+}

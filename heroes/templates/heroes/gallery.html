@@ -1,0 +1,168 @@
+{% load static %}
+
+<style>
+  img {
+    vertical-align: middle;
+  }
+
+  /* Position the image container (needed to position the left and right arrows) */
+  #gallery .container {
+    position: relative;
+    width: 80%;
+    margin-top: 50px;
+  }
+
+  /* Hide the images by default */
+  .mySlides {
+    opacity: 0;
+    transition: opacity 1s ease; /* Fades the image in and out */
+    display: none; /* Initially hidden */
+  }
+
+  .mySlides.active {
+    opacity: 1;
+    display: block; /* Show the active slide */
+  }
+
+  /* Add a pointer when hovering over the thumbnail images */
+  .cursor {
+    cursor: pointer;
+  }
+
+  /* Next & previous buttons */
+  .prev,
+  .next {
+    cursor: pointer;
+    position: absolute;
+    top: 40%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  /* Position the "next button" to the right */
+  .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+
+  /* On hover, add a black background color with a little bit see-through */
+  .prev:hover,
+  .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  .row {
+    margin-top: 20px;
+    justify-content: center;
+  }
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  /* Six columns side by side */
+  .column {
+    float: left;
+    width: 16.66%;
+  }
+
+  /* Add a transparency effect for thumnbail images */
+  .demo {
+    opacity: 0.1;
+  }
+
+  .active,
+  .demo:hover {
+    opacity: 1;
+  }
+</style>
+
+<section id="gallery">
+  <div class="container">
+    {% for image in biography.images.all %}
+    <div class="mySlides">
+      <img src="{{image.image.url}}" style="width: 100%" />
+    </div>
+    {% endfor %}
+
+
+    <div class="row">
+      {% for image in biography.images.all %}
+      <div class="column">
+        <img
+          class="demo cursor"
+          src="{{image.image.url}}"
+          style="width: 100%"
+          onclick="currentSlide(1)"
+          alt="{{name}}"
+        />
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<script>
+  let slideIndex = 0;
+  let autoSlideInterval;
+
+  // Initialize the slideshow
+  showSlides(slideIndex);
+
+  function showSlides(n) {
+    let slides = document.getElementsByClassName("mySlides");
+    let dots = document.getElementsByClassName("demo");
+
+    // Reset the slide index if necessary
+    if (n >= slides.length) {
+      slideIndex = 0;
+    } else if (n < 0) {
+      slideIndex = slides.length - 1;
+    }
+
+    // Remove the active class from all slides
+    for (let i = 0; i < slides.length; i++) {
+      slides[i].classList.remove("active");
+    }
+
+    // Remove the active class from all dots
+    for (let i = 0; i < dots.length; i++) {
+      dots[i].classList.remove("active");
+    }
+
+    // Add active class to the current slide and dot
+    slides[slideIndex].classList.add("active");
+    dots[slideIndex].classList.add("active");
+  }
+
+  function plusSlides(n) {
+    clearInterval(autoSlideInterval); // Stop autoplay when manually changed
+    slideIndex += n;
+    showSlides(slideIndex);
+    startAutoSlide(); // Restart autoplay
+  }
+
+  function currentSlide(n) {
+    clearInterval(autoSlideInterval); // Stop autoplay when user selects a thumbnail
+    slideIndex = n - 1;
+    showSlides(slideIndex);
+    startAutoSlide(); // Restart autoplay
+  }
+
+  // Automatically change slides every 3 seconds
+  function startAutoSlide() {
+    autoSlideInterval = setInterval(function () {
+      plusSlides(1); // Move to the next slide
+    }, 3000); // Slide interval (3 seconds)
+  }
+
+  startAutoSlide(); // Start autoplay
+</script>

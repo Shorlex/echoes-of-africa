@@ -1,0 +1,22 @@
+
+{% extends "layout.html" %}
+
+{% block title %}
+    User Authorization
+{% endblock title %}
+
+{% block content %}
+    <section id="users">
+        <h1>User Authorization</h1>
+        <form action="/users/login/" method="post">
+            {% csrf_token %}
+            {{form}}
+            {% if request.GET.next %}
+                <p style="font-size: 1.3rem"><b>Kindly login to perform this operation!</b></p>
+                <input type="hidden" name="next" value={{request.GET.next}}>
+            {% endif %}
+            <button type="submit">Login</button>
+            <p><b><i>New User? Please <a href="{% url "user_reg" %}">Signup</a> Here!</i></b></p>
+        </form>
+    </section>
+{% endblock content %}

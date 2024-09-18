@@ -1,0 +1,21 @@
+{% extends "layout.html" %} 
+{% block title %} Add a New Hero {% endblock title%} 
+{% block content %}
+<section id="users">
+  <h1>Upload a New Hero</h1>
+  <form
+    action="{% url 'post_hero' %}"
+    method="post"
+    enctype="multipart/form-data"
+  >
+    {% csrf_token %} 
+    {{form}}
+
+    <label for="hero_images">Upload Images:</label>
+    <i><p style="margin: 0; font-size: 12px; color: grey">You can select multiple images!</p></i>
+    <input type="file" name="images" accept="image/*" multiple /><br /><br />
+
+    <button type="submit">Create Hero</button>
+  </form>
+</section>
+{% endblock content %}

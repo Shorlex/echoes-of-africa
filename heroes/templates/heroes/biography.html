@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {{biography.name}}'s Biography | A True African Hero
+{% endblock title %}
+
+{% block content %}
+    <section id="biography">
+        <div class="biography">
+            <div class="home">
+                <div class="info">
+                    <div>
+                        <h1 class="hero-name">{{name|safe}}</h1><br>
+                        <div class="detail" style="">
+                            <div class="born">
+                                <p style="font-size: .7rem; color: grey">Born</p>
+                                <p style="font-size: 2rem">{{biography.year_of_birth}}</p>
+                                <p style="font-size: .7rem; color: grey">{{biography.nationality}}</p>
+                            </div>
+                            <div class="dash">
+                                <span class="material-symbols-outlined">
+                                    minimize
+                                </span>
+                            </div>
+                            <div class="dead">
+                                <p style="font-size: .7rem; color: grey">Died</p>
+                                <p style="font-size: 2rem">{{biography.year_of_death}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="description">
+                <h3>
+                    <span>{{biography.name}}</span>
+
+                    {% if user.is_authenticated and user == biography.user %}
+                        <a href="{% url 'update_hero' biography.slug %}">
+                            <span class="material-symbols-outlined">
+                                edit_square
+                            </span>
+                        </a>
+                        <a href="" style="color: #9b1003" data-bs-toggle="modal" data-bs-target="#myModal">
+                            <span class="material-symbols-outlined">
+                                delete
+                            </span>
+                        </a>
+                    {% endif %}
+                </h3>
+                <p><i>{{biography.date}}</i></p><br><br>
+                <p>{{biography.body|linebreaksbr}}</p>
+                {% include "heroes/gallery.html" %}
+            </div>
+            <div class="delete">
+                {% comment %} <button class="btn delete-btn" data-bs-toggle="modal" data-bs-target="#myModal">Delete Biography</button> {% endcomment %}
+                <div class="modal fade" id="myModal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <h5>Are you sure you want to delete the biography of <span class="text-danger fw-bolder">{{ biography.name }}?</span></h5>
+                                <p>This action cannot be undone.</p>
+                                <form action="{% url "delete_hero" biography.slug %}" class="confirm" method="post">
+                                    {% csrf_token %}
+                                    <a class="btn btn-secondary" data-bs-dismiss="modal">Cancel</a>
+                                    <button type="submit" class="btn btn-danger">Confrim</button>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% include "comment/comment.html" %}
+        </div>
+    </section>
+{% endblock content %}

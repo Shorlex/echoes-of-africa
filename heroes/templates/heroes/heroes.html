@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Heroes List
+{% endblock title %}
+
+{% block content %}
+    <section id='heroes'>
+        <h2>{% if query %} Search results for "{{query}}" {% else %} Lists of Heroes {% endif %}</h2>
+        <div class="heroes">
+            {% for hero in page_obj %}
+                <div class="hero">
+                    <a href="{% url "biography" slug=hero.slug %}">
+                    
+                        <div class="image">
+                            <img src="{{hero.banner.url}}" alt="{{hero.name}}">
+                        </div>
+                        <div class="detail">
+                            <h5>Name: {{hero.name}}</h5>
+                            <p>Nationality: {{hero.nationality}}<br>
+                            From: {{hero.year_of_birth}} &nbsp&nbsp&nbsp To: {{hero.year_of_death}}</p>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="pagination">
+            {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+            {% endif %}
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">Next</a>
+            {% endif %}
+        </div>
+    </section>
+{% endblock content %}

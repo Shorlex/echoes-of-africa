@@ -1,0 +1,18 @@
+
+{% extends "layout.html" %}
+
+{% block title %}
+    User Registration
+{% endblock title %}
+
+{% block content %}
+    <section id="users">
+        <h1>User Registration</h1>
+        <form action="/users/register/" method="post" class="users_reg">
+            {% csrf_token %}
+            {{form}}
+            <button type="submit">Create Account</button>
+            <p><b><i>Already have an account? please <a href="{% url "user_login" %}">login</a> here!</i></b></p>
+        </form>
+    </section>
+{% endblock content %}

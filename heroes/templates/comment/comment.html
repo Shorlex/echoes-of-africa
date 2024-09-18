@@ -1,0 +1,64 @@
+{% load static %}
+
+<div class="comment-section">
+  <h3>Comments</h3>
+  <button class="display-comment">Show Comments</button>
+  
+  <div class="show-comment">
+    {% if user.is_authenticated %}
+    <form action="" method="post">
+      {% csrf_token %} {{form}}
+      <button type="submit">Add Comment</button>
+    </form>
+    {% else %}
+    <p>Kindly <a href="{% url 'user_login' %}">Login</a> to post comment</p>
+    {% endif %} {% for comment in biography.comments.all %}
+    <div class="comment">
+      <p style="font-size: 12px; color: grey">
+        <b>{{user.username}}</b><br /><i>{{comment.date}}</i>
+      </p>
+      <p>{{comment.comment}}</p>
+      <div class="reply-like">
+        <button class="reply-btn" data-comment-id="{{ comment.id }}">
+          <span class="material-symbols-outlined reply"> edit_square </span>
+          <span style="font-size: 12px; color: grey"
+            >{{comment.replies.count}}</span
+          >
+        </button>
+        {% include "comment/likes.html" %}
+      </div>
+      <button class="reply-view" data-comment-id="{{ comment.id }}">
+        Replies
+        <span
+          style="position: absolute; bottom: 0; right: 0"
+          class="material-symbols-outlined"
+          >keyboard_arrow_down</span
+        >
+      </button>
+      {% if comment.replies.all %}
+      <div class="replies-content" style="" data-comment-id="{{ comment.id }}">
+        {% for reply in comment.replies.all %}
+        <hr />
+        <p style="font-size: 12px; color: grey">
+          <b>{{reply.user}}</b><br /><i>{{reply.date}}</i>
+        </p>
+        <p>{{reply.comment}}</p>
+        {% endfor %}
+      </div>
+      {% endif %}
+      <form method="post" class="reply-form" data-comment-id="{{ comment.id }}">
+        {% if user.is_authenticated %} {% csrf_token %}
+        <textarea name="comment" rows="1"></textarea>
+        <input type="hidden" name="parent" value="{{ comment.id }}" />
+        <button type="submit">Reply</button>
+        {% else %}
+        <p>
+          Please <a href="{% url 'user_login' %}">Login</a> to reply this
+          comment
+        </p>
+        {% endif %}
+      </form>
+    </div>
+    {% endfor %}
+  </div>
+</div>

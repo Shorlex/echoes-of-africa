@@ -1,0 +1,25 @@
+{% load static %}
+
+<a
+  hx-get="{% url 'comment_like' comment.id %}"
+  hx-target="this"
+  hx-swap="outerHTML"
+  style="cursor: pointer; color: grey"
+>
+  {% if request.user in comment.likes.all %}
+  <span
+    class="material-symbols-outlined heart"
+    style="margin-left: 20px; color: #9b1003; font-weight: bolder"
+  >
+    heart_check
+  </span>
+  {% else %}
+  <span
+    class="material-symbols-outlined heart"
+    style="margin-left: 20px; color: grey"
+  >
+    heart_check
+  </span>
+  {% endif %}
+  <span style="font-size: 12px">{{ comment.likes.count }}</span>
+</a>

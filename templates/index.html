@@ -1,0 +1,127 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block title %}
+    Echoes of Africa | Celebrating African Heroes
+{% endblock title %}
+
+{% block content %}
+    <section id="home">
+        <div class="heading">
+            <h1>Celebrating the Legacy of <span class="africa">African Heroes</span></h1>
+            <h3>Stories that Inspire, Empower and Unite</h3>
+            <img src="{% static "images/intro.png" %}" alt="intro">
+        </div>
+    </section>
+    <section id="intro">
+        <div class="intro">
+            <div class="image">
+                <img src="{% static "images/hero.png" %}" alt="hero">
+            </div>
+            <div class="detail">
+                <p>
+                    Welcome to Echoes of Africa, a platform dedicated to honoring the brave men and women who shaped the history and future of Africa. From the warriors who fought for independence to the thinkers who revolutionized their societies, the heroes we feature on this blog have all left an indelible mark on the world. Our mission is to bring their stories to life, ensuring that their legacies are celebrated and remembered for generations to come.<br><br>
+                    Whether you are a student of history, a lover of culture, or simply someone inspired by the courage and resilience of extraordinary individuals, this blog offers a rich collection of narratives that highlight the diversity and strength of African leadership, creativity, and innovation."
+                </p>
+            </div>
+        </div>
+    </section>
+    <section id="heroes" style="padding: 50px 100px; height: auto;">
+        <h2>Explore the lifes of notable African Heroes</h2>
+        <div class="heroes">
+            {% for hero in heroes %}
+                <div class="hero">
+                        <div class="image">
+                            <img src="{{hero.banner.url}}" alt="{{hero.name}}">
+                        </div>
+                        <div class="detail">
+                            <h5>Name: {{hero.name}}</h5>
+                            <p>Nationality: {{hero.nationality}}<br>
+                            From: {{hero.year_of_birth}} - To: {{hero.year_of_death}}</p>
+                        </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="more">
+            <a href="{% url "heroes" %}">Expore More</a>
+        </div>
+    </section>
+    <section id='weekly-hero'>
+        <h2>Hero of the Week</h2><br>
+        {% if weekly_hero %}
+            <h5>Explore the life of {{ weekly_hero.name }} as our hero of the week.</h5><br>
+            <div class="hero">
+                <div class="image">
+                    <img src="{{ weekly_hero.banner.url }}" alt="{{ weekly_hero.name }}">
+                </div><br>
+                <div class="body">
+                    <p>{{ weekly_hero.body|truncatewords:150 }}</p>
+                    <p><i>Read more on the life of {{weekly_hero.name}} <a href="{% url "biography" weekly_hero.slug %}">here</a></i></p>
+                </div>
+            </div>
+        {% else %}
+            <p>No Hero of the Week selected yet.</p>
+        {% endif %}
+    </section>
+    <section id="testimonial">
+        <div class="container">
+            <div id="demo" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="carousel-caption">
+                    <p>
+                        "Echoes of Africa is a treasure trove of knowledge, bringing to light the incredible achievements of African heroes. It's inspiring to see the legacy of these leaders being honored and shared with the world."
+                    </p>
+                    <img src="https://i.imgur.com/lE89Aey.jpg" />
+                    <div>
+                        <p style="font-size: 1rem"><b>Dr. Amina Juma,</b><br><i>Historian and Educator</i></p>
+                    </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-caption">
+                    <p>
+                        "As an African diaspora member, discovering these stories has deepened my connection to my roots. This blog beautifully captures the essence of our history and the heroes who shaped it."
+                    </p>
+                    <img src="https://i.imgur.com/QptVdsp.jpg" class="img-fluid" />
+                    <div id="image-caption">
+                        <p>Kwame Mensah,<br><i>Author and Cultural Advocate</i></p>
+                    </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-caption">
+                    <p>
+                        "This site is a valuable resource for educators and students alike. The detailed biographies and well-researched content provide a comprehensive understanding of Africa's rich history and the figures who have influenced it."
+                    </p>
+                    <img src="https://i.imgur.com/jQWThIn.jpg" class="img-fluid" />
+                    <div id="image-caption">
+                        <p>Professor Adjoa Okoro,<br><i>African Studies Scholar</i></p>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                <a class="carousel-control-prev" href="#demo" data-bs-slide="prev">
+                <span class="material-symbols-outlined arrow">
+                    arrow_back
+                </span>
+                </a>
+                <a class="carousel-control-next" href="#demo" data-bs-slide="next">
+                <span class="material-symbols-outlined arrow">
+                    arrow_forward
+                </span>
+                </a>
+            </div>
+        </div>
+    </section>
+    <section id="cta">
+        <div class="cta">
+            <div class="action">
+                <h2>Join the Community</h2>
+                <h3>Become a part of our community. Register to contribute your own stories, share your thoughts, and connect with like-minded individuals.</h3>
+            </div>
+            <div class="button">
+                <a href="{% url "user_reg" %}">Join Us</a>
+            </div>
+        </div>
+    </section>
+{% endblock content %}
