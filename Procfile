@@ -1,0 +1,1 @@
+web: gunicorn echoes_of_africa.wsgi --log-file -

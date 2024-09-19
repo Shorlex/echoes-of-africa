@@ -6,7 +6,15 @@
 
 {% block content %}
     <section id='heroes'>
-        <h2>{% if query %} Search results for "{{query}}" {% else %} Lists of Heroes {% endif %}</h2>
+        {% if query %}
+            <h2>Search results for "{{query}}"</h2>
+        {% else %}
+            <div>
+                <h2 style="text-align: center; font-size: 3rem">
+                    Meet the Heroes of Africa
+                </h2>
+            </div>
+         {% endif %}
         <div class="heroes">
             {% for hero in page_obj %}
                 <div class="hero">
